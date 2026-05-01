@@ -475,7 +475,6 @@ export default function App() {
                         src={doctorImage} 
                         alt="Dr. Naveen Kumar - Audiologist & Speech Therapist" 
                         className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
-                        referrerPolicy="no-referrer"
                       />
                     </div>
                     <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-[#1a3c6e] text-white px-6 py-2 rounded-xl shadow-xl z-10 whitespace-nowrap border-2 border-white">
@@ -758,7 +757,6 @@ export default function App() {
                     src={doctorImage} 
                     alt="Dr. Naveen Kumar" 
                     style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} 
-                    referrerPolicy="no-referrer"
                   />
                 </div>
                 <div style={{ padding: '24px' }}>
