@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { collection, addDoc, serverTimestamp, doc, getDocFromServer } from 'firebase/firestore';
 import { db, auth } from './firebase';
-import doctorImage from './assets/naveen-kumar.png';
 
 declare global {
   interface Window {
@@ -472,7 +471,7 @@ export default function App() {
                     <div className="absolute -inset-2 bg-gradient-to-r from-[#c9a84c] to-[#1a3c6e] rounded-[40px] blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
                     <div className="relative aspect-square overflow-hidden rounded-[35px] border-4 border-white shadow-2xl">
                       <img 
-                        src={doctorImage} 
+                        src="/naveen-kumar.png" 
                         alt="Dr. Naveen Kumar - Audiologist & Speech Therapist" 
                         className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
                       />
@@ -754,7 +753,7 @@ export default function App() {
               <div className="team-card" style={{ width: '320px', padding: '0', overflow: 'hidden' }}>
                 <div style={{ height: '320px', width: '100%', overflow: 'hidden' }}>
                   <img 
-                    src={doctorImage} 
+                    src="/naveen-kumar.png" 
                     alt="Dr. Naveen Kumar" 
                     style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} 
                   />
