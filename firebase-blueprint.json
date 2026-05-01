@@ -1,0 +1,49 @@
+{
+  "entities": {
+    "Appointment": {
+      "title": "Appointment",
+      "description": "An appointment request from a patient",
+      "type": "object",
+      "properties": {
+        "fullName": {
+          "type": "string",
+          "description": "Full name of the patient"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "10-digit mobile number"
+        },
+        "service": {
+          "type": "string",
+          "description": "Selected service (Hearing Aid, Speech Therapy, etc.)"
+        },
+        "preferredDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Preferred date for the appointment"
+        },
+        "message": {
+          "type": "string",
+          "description": "Additional message or context"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "confirmed", "cancelled"],
+          "description": "Status of the appointment"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the request was created"
+        }
+      },
+      "required": ["fullName", "phoneNumber", "service", "preferredDate", "createdAt", "status"]
+    }
+  },
+  "firestore": {
+    "appointments/{appointmentId}": {
+      "schema": "Appointment",
+      "description": "Collection of appointment requests"
+    }
+  }
+}

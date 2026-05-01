@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isValidId(id) { 
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$'); 
+    }
+    
+    function isValidAppointment(data) {
+      return data.fullName is string && data.fullName.size() > 0 && data.fullName.size() <= 100 &&
+             data.phoneNumber is string && data.phoneNumber.size() >= 10 && data.phoneNumber.size() <= 15 &&
+             data.service is string &&
+             data.preferredDate is string &&
+             data.status == 'pending' &&
+             data.createdAt == request.time;
+    }
+
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Appointments collection
+    match /appointments/{appointmentId} {
+      allow create: if isValidAppointment(request.resource.data);
+      // Admin should be able to read. For now, we restrict read.
+      // In a real app, we'd add: allow read: if isAdmin();
+    }
+  }
+}
