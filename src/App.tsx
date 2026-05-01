@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { collection, addDoc, serverTimestamp, doc, getDocFromServer } from 'firebase/firestore';
 import { db, auth } from './firebase';
-import doctorImage from './assets/naveen-kumar.png';
 
 declare global {
   interface Window {
@@ -467,25 +466,8 @@ export default function App() {
           <div className="container">
             <div className="max-w-5xl mx-auto">
               <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-                <div className="w-full lg:w-2/5" data-aos="fade-right">
-                  <div className="relative group">
-                    <div className="absolute -inset-2 bg-gradient-to-r from-[#c9a84c] to-[#1a3c6e] rounded-[40px] blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
-                    <div className="relative aspect-square overflow-hidden rounded-[35px] border-4 border-white shadow-2xl">
-                      <img 
-                        src={doctorImage} 
-                        alt="Dr. Naveen Kumar - Audiologist & Speech Therapist" 
-                        className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-[#1a3c6e] text-white px-6 py-2 rounded-xl shadow-xl z-10 whitespace-nowrap border-2 border-white">
-                      <div className="text-xs font-black opacity-80 uppercase tracking-tighter">RCI Registered</div>
-                      <div className="text-lg font-bold leading-none">A120698</div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="w-full lg:w-3/5 text-center lg:text-left" data-aos="fade-left">
-                  <div className="section-tag mb-4 inline-block">Director's Profile</div>
+                <div className="w-full text-center" data-aos="fade-up">
+                  <div className="section-tag mb-6 inline-block">Director's Profile</div>
                   <h2 id="doctor-heading" className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0f2548] leading-tight mb-4 tracking-tight">
                     Naveen Kumar
                   </h2>
@@ -495,26 +477,32 @@ export default function App() {
                   <h3 className="text-xl text-slate-700 font-semibold mb-6">
                     DHLS (MUMBAI), B.ASLP (P.P.U)
                   </h3>
-                  <p className="sd-desc text-slate-600 leading-relaxed mb-8 text-base sm:text-lg italic">
-                    "Better hearing starts with expert care. My mission is to ensure that every patient in Bihar has access to the world's best hearing technology and compassionate speech therapy."
-                  </p>
-                  <div className="flex flex-wrap gap-4 mb-10 justify-center lg:justify-start">
-                    <div className="flex items-center gap-3 bg-slate-50 px-4 py-2 rounded-lg border border-slate-100">
-                      <i className="fas fa-check-circle text-[#c9a84c]"></i>
-                      <span className="text-slate-700 font-medium text-sm sm:text-base">10+ Years Expertise</span>
+                  <div className="max-w-3xl mx-auto">
+                    <p className="sd-desc text-slate-600 leading-relaxed mb-8 text-base sm:text-lg italic">
+                      "Better hearing starts with expert care. My mission is to ensure that every patient in Bihar has access to the world's best hearing technology and compassionate speech therapy."
+                    </p>
+                    <div className="flex flex-wrap gap-4 mb-10 justify-center">
+                      <div className="flex items-center gap-3 bg-slate-50 px-4 py-2 rounded-lg border border-slate-100">
+                        <i className="fas fa-check-circle text-[#c9a84c]"></i>
+                        <span className="text-slate-700 font-medium text-sm sm:text-base">10+ Years Expertise</span>
+                      </div>
+                      <div className="flex items-center gap-3 bg-slate-50 px-4 py-2 rounded-lg border border-slate-100">
+                        <i className="fas fa-check-circle text-[#c9a84c]"></i>
+                        <span className="text-slate-700 font-medium text-sm sm:text-base">Trained in Mumbai</span>
+                      </div>
+                      <div className="flex items-center gap-3 bg-slate-50 px-4 py-2 rounded-lg border border-slate-100">
+                        <i className="fas fa-id-badge text-[#c9a84c]"></i>
+                        <span className="text-slate-700 font-medium text-sm sm:text-base">RCI: A120698</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-3 bg-slate-50 px-4 py-2 rounded-lg border border-slate-100">
-                      <i className="fas fa-check-circle text-[#c9a84c]"></i>
-                      <span className="text-slate-700 font-medium text-sm sm:text-base">Trained in Mumbai</span>
-                    </div>
+                    <button 
+                      onClick={() => showPage('contact')} 
+                      className="btn-gold inline-flex items-center gap-3 px-8 py-4 rounded-2xl shadow-xl hover:scale-105 transition-all w-full sm:w-auto justify-center"
+                    >
+                      <i className="fas fa-calendar-check" aria-hidden="true"></i>
+                      <span>Schedule an Appointment</span>
+                    </button>
                   </div>
-                  <button 
-                    onClick={() => showPage('contact')} 
-                    className="btn-gold inline-flex items-center gap-3 px-8 py-4 rounded-2xl shadow-xl hover:scale-105 transition-all w-full sm:w-auto justify-center"
-                  >
-                    <i className="fas fa-calendar-check" aria-hidden="true"></i>
-                    <span>Schedule an Appointment</span>
-                  </button>
                 </div>
               </div>
             </div>
@@ -751,23 +739,18 @@ export default function App() {
             <p className="section-sub" data-aos="fade-up" data-aos-delay="100">Led by highly qualified clinical experts dedicated to restoring your hearing and speech health.</p>
             
             <div className="team-placeholder" data-aos="fade-up" data-aos-delay="150" style={{ justifyContent: 'center' }}>
-              <div className="team-card" style={{ width: '320px', padding: '0', overflow: 'hidden' }}>
-                <div style={{ height: '320px', width: '100%', overflow: 'hidden' }}>
-                  <img 
-                    src={doctorImage} 
-                    alt="Dr. Naveen Kumar" 
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} 
-                  />
-                </div>
-                <div style={{ padding: '24px' }}>
-                  <div className="team-name" style={{ fontSize: '22px' }}>Naveen Kumar</div>
-                  <div className="team-role" style={{ color: 'var(--gold-light)', fontWeight: '700', marginBottom: '16px', letterSpacing: '1px', textTransform: 'uppercase', fontSize: '14px' }}>
+              <div className="team-card" style={{ width: '320px', padding: '0', overflow: 'hidden', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                <div style={{ padding: '32px 24px', textAlign: 'center' }}>
+                  <div className="team-name" style={{ fontSize: '24px', marginBottom: '8px' }}>Naveen Kumar</div>
+                  <div className="team-role" style={{ color: 'var(--gold-light)', fontWeight: '700', marginBottom: '20px', letterSpacing: '1px', textTransform: 'uppercase', fontSize: '14px' }}>
                     Director
                   </div>
                   <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.8)', lineHeight: '1.6' }}>
-                    <p style={{ marginBottom: '4px', fontWeight: '600' }}>Audiologist & Speech Therapist</p>
+                    <p style={{ marginBottom: '8px', fontWeight: '600' }}>Audiologist & Speech Therapist</p>
                     <p style={{ opacity: 0.9 }}>DHLS (MUMBAI), B.ASLP (P.P.U)</p>
-                    <p style={{ marginTop: '12px', fontSize: '12px', color: 'var(--gold-light)', opacity: 0.8 }}>RCI Reg. No: A120698</p>
+                    <div style={{ marginTop: '20px', display: 'inline-block', backgroundColor: 'rgba(201, 168, 76, 0.1)', padding: '6px 12px', borderRadius: '8px', border: '1px solid rgba(201, 168, 76, 0.2)' }}>
+                      <p style={{ fontSize: '12px', color: 'var(--gold-light)', fontWeight: 'bold' }}>RCI Reg. No: A120698</p>
+                    </div>
                   </div>
                 </div>
               </div>
