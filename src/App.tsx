@@ -228,44 +228,44 @@ export default function App() {
 
   return (
     <>
-      {/* HEADER */}
       <header className={`header ${isScrolled ? 'scrolled' : ''}`} id="header">
         <div className="nav-container">
-          <div className="logo" onClick={() => showPage('home')}>
-            <div className="logo-icon">P</div>
+          <div className="logo" onClick={() => showPage('home')} role="button" aria-label="Go to Homepage">
+            <div className="logo-icon" aria-hidden="true">P</div>
             <div className="logo-text">
               <div className="logo-title">PSHCC</div>
               <div className="logo-tag">Speech & Hearing Care</div>
             </div>
           </div>
 
-          <nav className="nav-links">
-            <span className={`nav-link ${activePage === 'home' ? 'active' : ''}`} onClick={() => showPage('home')}>Home</span>
-            <span className={`nav-link ${activePage === 'services' ? 'active' : ''}`} onClick={() => showPage('services')}>Services</span>
-            <span className={`nav-link ${activePage === 'about' ? 'active' : ''}`} onClick={() => showPage('about')}>About</span>
-            <span className="nav-link" onClick={() => scrollToSection('reviews-section')}>Reviews</span>
-            <span className={`nav-link ${activePage === 'contact' ? 'active' : ''}`} onClick={() => showPage('contact')}>Contact</span>
-            <span className="nav-link nav-cta" onClick={() => showPage('contact')}>Book Appointment</span>
+          <nav className="nav-links" aria-label="Desktop Navigation">
+            <span className={`nav-link ${activePage === 'home' ? 'active' : ''}`} onClick={() => showPage('home')} role="button" aria-current={activePage === 'home' ? 'page' : undefined}>Home</span>
+            <span className={`nav-link ${activePage === 'services' ? 'active' : ''}`} onClick={() => showPage('services')} role="button" aria-current={activePage === 'services' ? 'page' : undefined}>Services</span>
+            <span className={`nav-link ${activePage === 'about' ? 'active' : ''}`} onClick={() => showPage('about')} role="button" aria-current={activePage === 'about' ? 'page' : undefined}>About</span>
+            <span className="nav-link" onClick={() => scrollToSection('reviews-section')} role="button">Reviews</span>
+            <span className={`nav-link ${activePage === 'contact' ? 'active' : ''}`} onClick={() => showPage('contact')} role="button" aria-current={activePage === 'contact' ? 'page' : undefined}>Contact</span>
+            <span className="nav-link nav-cta" onClick={() => showPage('contact')} role="button">Book Appointment</span>
           </nav>
 
-          <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} id="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} id="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)} role="button" aria-label="Toggle Menu" aria-expanded={isMenuOpen}>
             <span></span><span></span><span></span>
           </div>
         </div>
       </header>
 
       {/* Mobile Menu */}
-      <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`} id="mobileMenu">
-        <span className="nav-link" onClick={() => { showPage('home'); setIsMenuOpen(false); }}>🏠 Home</span>
-        <span className="nav-link" onClick={() => { showPage('services'); setIsMenuOpen(false); }}>🔧 Services</span>
-        <span className="nav-link" onClick={() => { showPage('about'); setIsMenuOpen(false); }}>ℹ️ About Us</span>
-        <span className="nav-link" onClick={() => { scrollToSection('reviews-section'); setIsMenuOpen(false); }}>⭐ Reviews</span>
-        <span className="nav-link" onClick={() => { showPage('contact'); setIsMenuOpen(false); }}>📞 Contact</span>
-        <span className="nav-link nav-cta" onClick={() => { showPage('contact'); setIsMenuOpen(false); }}>📅 Book Appointment</span>
+      <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`} id="mobileMenu" aria-hidden={!isMenuOpen}>
+        <span className="nav-link" onClick={() => { showPage('home'); setIsMenuOpen(false); }} role="button">🏠 Home</span>
+        <span className="nav-link" onClick={() => { showPage('services'); setIsMenuOpen(false); }} role="button">🔧 Services</span>
+        <span className="nav-link" onClick={() => { showPage('about'); setIsMenuOpen(false); }} role="button">ℹ️ About Us</span>
+        <span className="nav-link" onClick={() => { scrollToSection('reviews-section'); setIsMenuOpen(false); }} role="button">⭐ Reviews</span>
+        <span className="nav-link" onClick={() => { showPage('contact'); setIsMenuOpen(false); }} role="button">📞 Contact</span>
+        <span className="nav-link nav-cta" onClick={() => { showPage('contact'); setIsMenuOpen(false); }} role="button">📅 Book Appointment</span>
       </div>
 
-      {/* HOME PAGE */}
-      <div className={`page ${activePage === 'home' ? 'active' : ''}`} id="page-home">
+      <main>
+        {/* HOME PAGE */}
+        <div className={`page ${activePage === 'home' ? 'active' : ''}`} id="page-home">
         <section className="hero">
           <div className="hero-bg">
             <div className="hero-orb hero-orb-1"></div>
@@ -887,12 +887,14 @@ export default function App() {
         </div>
       </div>
 
+      </main>
+
       {/* FLOATING BUTTONS */}
-      <a href="https://wa.me/917295962124" className="float-wa" target="_blank" rel="noreferrer">
-        <i className="fab fa-whatsapp"></i>
+      <a href="https://wa.me/917295962124" className="float-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <i className="fab fa-whatsapp" aria-hidden="true"></i>
       </a>
-      <a href="tel:+917295962124" className="float-call">
-        <i className="fas fa-phone"></i>
+      <a href="tel:+917295962124" className="float-call" aria-label="Call Us Now">
+        <i className="fas fa-phone" aria-hidden="true"></i>
         <span>Call Now</span>
       </a>
     </>
